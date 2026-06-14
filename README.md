@@ -21,7 +21,7 @@
 ابتدا روی دکمه **Fork** کلیک کنید تا این ریپازیتوری را به حساب خود منتقل کنید:
 
 ```bash
-https://github.com/[your-username]/rvg
+https://github.com/arvin341az-glitch/RVG/
 ```
 
 ---
@@ -52,11 +52,6 @@ https://github.com/[your-username]/rvg
 
 ---
 
-## ❤️ حمایت از پروژه
-
-اگر این پروژه برایتان مفید بود، می‌توانید از طریق لینک زیر از ما حمایت کنید:
-
-[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://your-donate-link.com)
 
 ---
 
