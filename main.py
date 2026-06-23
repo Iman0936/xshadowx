@@ -266,7 +266,7 @@ async def subscription_all(_=Depends(require_auth)):
     host = get_host()
     async with LINKS_LOCK:
         lines = [
-            generate_vless_link(uid, host, remark=f"RVG-{d['label']}")
+            generate_vless_link(uid, host, remark=f"⚡{d['label']}")
             for uid, d in LINKS.items()
             if is_link_allowed(d)
         ]
