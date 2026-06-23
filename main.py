@@ -258,7 +258,7 @@ async def subscription_single(uuid: str):
     vless = generate_vless_link(uuid, host, remark=f"RVG-{link['label']}")
     content = base64.b64encode(vless.encode()).decode()
     return Response(content=content, media_type="text/plain",
-                    headers={"profile-title": link["label"], "support-url": "https://t.me/CodeBoxo"})
+                    headers={"profile-title": quote(link["label"]), "support-url": "https://t.me/CodeBoxo"})
 
 @app.get("/sub-all")
 async def subscription_all(_=Depends(require_auth)):
@@ -416,7 +416,7 @@ async def sub_group_subscription(uuid_key: str, request: Request):
         content=content,
         media_type="text/plain",
         headers={
-            "profile-title": sub["name"],
+            "profile-title": quote(sub["name"]),
             "support-url": "https://t.me/CodeBoxo",
             "profile-update-interval": "12",
         }
