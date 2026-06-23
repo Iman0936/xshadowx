@@ -157,7 +157,7 @@ def generate_uuid() -> str:
     h = secrets.token_hex(16)
     return f"{h[:8]}-{h[8:12]}-{h[12:16]}-{h[16:20]}-{h[20:32]}"
 
-def generate_vless_link(uuid: str, host: str, remark: str = "RVG") -> str:
+def generate_vless_link(uuid: str, host: str, remark: str = "⚡") -> str:
     path = f"/ws/{uuid}"
     params = {
         "encryption": "none",
