@@ -255,7 +255,7 @@ async def subscription_single(uuid: str):
     if not link or not is_link_allowed(link):
         raise HTTPException(status_code=404, detail="not found or inactive")
     host = get_host()
-    vless = generate_vless_link(uuid, host, remark=f"RVG-{link['label']}")
+    vless = generate_vless_link(uuid, host, remark=f"⚡{link['label']}")
     content = base64.b64encode(vless.encode()).decode()
     return Response(content=content, media_type="text/plain",
                     headers={"profile-title": quote(link["label"]), "support-url": "https://t.me/CodeBoxo"})
@@ -409,7 +409,7 @@ async def sub_group_subscription(uuid_key: str, request: Request):
         for lid in link_ids:
             link = LINKS.get(lid)
             if link and is_link_allowed(link):
-                lines.append(generate_vless_link(lid, host, remark=f"RVG-{link['label']}"))
+                lines.append(generate_vless_link(lid, host, remark=f"⚡{link['label']}"))
 
     content = base64.b64encode("\n".join(lines).encode()).decode()
     return Response(
@@ -520,7 +520,7 @@ async def create_link(request: Request, _=Depends(require_auth)):
         "uuid": uid,
         **LINKS[uid],
         "expired": False,
-        "vless_link": generate_vless_link(uid, host, remark=f"RVG-{label}"),
+        "vless_link": generate_vless_link(uid, host, remark=f"⚡{label}"),
         "sub_url": f"https://{host}/sub/{uid}",
     }
 
@@ -535,7 +535,7 @@ async def list_links(_=Depends(require_auth)):
             "uuid": uid,
             **d,
             "expired": is_link_expired(d),
-            "vless_link": generate_vless_link(uid, host, remark=f"RVG-{d['label']}"),
+            "vless_link": generate_vless_link(uid, host, remark=f"⚡{d['label']}"),
             "sub_url": f"https://{host}/sub/{uid}",
         })
     result.sort(key=lambda x: x["created_at"], reverse=True)
@@ -836,7 +836,7 @@ async def public_sub_data(uuid_key: str, request: Request):
             "limit_bytes": link.get("limit_bytes", 0),
             "limit_fmt": "∞" if link.get("limit_bytes", 0) == 0 else fmt_bytes(link["limit_bytes"]),
             "expires_at": link.get("expires_at"),
-            "vless_link": generate_vless_link(lid, host, remark=f"RVG-{link['label']}"),
+            "vless_link": generate_vless_link(lid, host, remark=f"⚡{link['label']}"),
             "sub_url": f"https://{host}/sub/{lid}",
             "connections": conn_count,
         })
